@@ -261,7 +261,7 @@ public class BattleScreen extends AHODScreen {
             gameInstance.getMessageHUD().addGoldMessage(gold);
             if (enemy.isBoss()) {
                 //screen is switched in this method
-                gameInstance.advanceLevel();
+                gameInstance.fadeSwitchScreen(new CrewSelectionScreen(gameInstance), true);
             } else {
                 gameInstance.fadeSwitchScreen(new CardSelectionScreen(gameInstance, gameInstance.getCardManager().getRandomSelection(difficulty)), true);
             }
