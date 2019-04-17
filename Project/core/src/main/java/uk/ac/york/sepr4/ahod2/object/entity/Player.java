@@ -12,6 +12,7 @@ import java.util.Optional;
  */
 @Data
 public class Player {
+    //new feature crew member, hold by an array
     public Integer[] crew = {0,0,0};
     private Ship ship;
     private Optional<Node> location = Optional.empty();

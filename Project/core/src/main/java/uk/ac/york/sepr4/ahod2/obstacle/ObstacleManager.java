@@ -7,12 +7,11 @@ import com.badlogic.gdx.utils.Json;
 import java.util.NavigableMap;
 import java.util.Random;
 import java.util.TreeMap;
-
+/***
+ * NEW
+ *used to input the info of obstacles from json file and generate the obstacles
+ */
 public class ObstacleManager {
-    /***
-     * new
-     *used to input the info of obstacles from json file and generate the obstacles
-     */
     private final NavigableMap<Double, Obstacle> map = new TreeMap<>();
     private double weights = 0;
 
@@ -27,6 +26,10 @@ public class ObstacleManager {
         });
     }
 
+    /***
+     * used to generate Obstacles randomly
+     * @return obstacle generated
+     */
     public Obstacle generateObstacle(){
         Random random = new Random();
         Double key = random.nextDouble()*weights;

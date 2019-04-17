@@ -2,7 +2,7 @@ package uk.ac.york.sepr4.ahod2.obstacle;
 
 import lombok.Getter;
 /***
- * new
+ * NEW
  * Card used to represent instance of obstacles.
  * Contains data used to populate ObstacleScreen.
  */
@@ -15,6 +15,7 @@ public class Obstacle {
     private String background = "default.png";
     private Integer health;
     private Double escapeChance;
+    private Boolean removeCrew;
 
 
     public Obstacle(){

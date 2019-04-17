@@ -181,8 +181,7 @@ public class DepartmentScreen extends AHODScreen {
      * Switch to MinigameScreen.
      */
     private void switchMinigame() {
-        //gameInstance.fadeSwitchScreen(minigameScreen);
-        gameInstance.fadeSwitchScreen(new CrewSelectionScreen(gameInstance));
+        gameInstance.fadeSwitchScreen(minigameScreen);
     }
 
     /***

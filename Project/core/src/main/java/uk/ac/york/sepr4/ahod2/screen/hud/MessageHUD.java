@@ -37,6 +37,8 @@ public class MessageHUD {
     private float currentMessageTime = 0;
     private HashMap<Label, Float> goldMessages = new HashMap<>();
     private HashMap<Label, Float> scoreMessages = new HashMap<>();
+    private HashMap<Label, Float> healthMessages = new HashMap<>();
+    private HashMap<Label, Float> crewMessages = new HashMap<>();
 
     public MessageHUD(GameInstance gameInstance) {
         this.gameInstance = gameInstance;
@@ -60,9 +62,56 @@ public class MessageHUD {
         goldMessages.put(label, 0f);
     }
 
+    /***
+     * NEW
+     * Add sliding message showing increase in score of specified value.
+     * @param score specified value of score
+     */
     public void addScoreMessage(Integer score) {
         Label label = new Label("+ " + score + " SCORE", StyleManager.generateLabelStyle(30, Color.GREEN));
         scoreMessages.put(label, 0f);
+    }
+
+    /***
+     * NEW
+     * Add sliding message showing change in health of specified value.
+     * @param health specified value of health
+     */
+    public void addHealthMessage(Integer health){
+        Label label = new Label(health + " Health", StyleManager.generateLabelStyle(30, Color.GREEN));
+        healthMessages.put(label, 0f);
+    }
+
+    /***
+     * NEW
+     * Add sliding message showing change in crew members of specified type.
+     * @param crewType specified value of crew type
+     * @param amount specified value of change amount
+     */
+    public void addCrewMessages(Integer crewType, int amount){
+        String amoutString;
+        if(amount > 0){
+            amoutString = "+" + Integer.toString(amount);
+        }else{
+            amoutString = Integer.toString(amount);
+        }
+        switch (crewType){
+            case 0:
+
+                Label label = new Label(amoutString + " Carpenter", StyleManager.generateLabelStyle(30, Color.GREEN));
+                healthMessages.put(label, 0f);
+                break;
+            case 1:
+                label = new Label(amoutString + " Master Gunner", StyleManager.generateLabelStyle(30, Color.GREEN));
+                healthMessages.put(label, 0f);
+                break;
+            case 2:
+                label = new Label(amoutString + " Quartermaster", StyleManager.generateLabelStyle(30, Color.GREEN));
+                healthMessages.put(label, 0f);
+                break;
+        }
+
+
     }
 
     /***
@@ -96,42 +145,17 @@ public class MessageHUD {
 
         //slide gold message up the screen edge
         List<Label> toRemove = new ArrayList<>();
-        for (Label label : goldMessages.keySet()) {
-            Float time = (goldMessages.get(label));
-            if (time + delta > resourceMessageTime) {
-                //add label to be removed
-                toRemove.add(label);
-            } else {
-                goldMessages.replace(label, time + delta);
-                //add label to stage if not exists
-                if (!hudStage.getActors().contains(label, false)) {
-                    hudStage.addActor(label);
-                }
-                //slide label
-                label.setPosition(5, 5 + (Gdx.graphics.getHeight() / 2) * (time / resourceMessageTime));
+        updateMessages(goldMessages, 5, 5, delta, toRemove);
+        updateMessages(scoreMessages, 5, 35, delta, toRemove);
+        updateMessages(healthMessages, 5, 5, delta, toRemove);
+        updateMessages(crewMessages, 5, 5, delta, toRemove);
 
-            }
-        }
-
-        for (Label label : scoreMessages.keySet()) {
-            Float time = (scoreMessages.get(label));
-            if (time + delta > resourceMessageTime) {
-                //add label to be removed
-                toRemove.add(label);
-            } else {
-                scoreMessages.replace(label, time + delta);
-                //add label to stage if not exists
-                if (!hudStage.getActors().contains(label, false)) {
-                    hudStage.addActor(label);
-                }
-                //slide label
-                label.setPosition(5, 35 + (Gdx.graphics.getHeight() / 2) * (time / resourceMessageTime));
-
-            }
-        }
         //remove message here (avoid ConcurrentModificationException)
         for (Label remove : toRemove) {
             goldMessages.remove(remove);
+            scoreMessages.remove(remove);
+            healthMessages.remove(remove);
+            crewMessages.remove(remove);
             hudStage.getActors().removeValue(remove, false);
         }
 
@@ -181,6 +205,34 @@ public class MessageHUD {
 
         hudStage.addActor(messageTable);
 
+    }
+
+    /***
+     * NEW
+     * used to update different type of messages to their corresponding map
+     * @param messages message type
+     * @param xPos x position rendered on screen
+     * @param yPos y position rendered on screen
+     * @param delta system delta time
+     * @param toRemove list contains the message need to be removed
+     */
+
+    public void updateMessages(HashMap<Label, Float> messages, int xPos, int yPos, float delta, List<Label> toRemove){
+        for (Label label : messages.keySet()) {
+            Float time = (messages.get(label));
+            if (time + delta > resourceMessageTime) {
+                //add label to be removed
+                toRemove.add(label);
+            } else {
+                messages.replace(label, time + delta);
+                //add label to stage if not exists
+                if (!hudStage.getActors().contains(label, false)) {
+                    hudStage.addActor(label);
+                }
+                //slide label
+                label.setPosition(xPos, yPos + (Gdx.graphics.getHeight() / 2) * (time / resourceMessageTime));
+            }
+        }
     }
 
 }

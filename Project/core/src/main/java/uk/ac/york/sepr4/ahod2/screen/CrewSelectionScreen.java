@@ -13,6 +13,10 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import uk.ac.york.sepr4.ahod2.GameInstance;
 import uk.ac.york.sepr4.ahod2.io.FileManager;
 
+/***
+ * NEW
+ * class used to make crew selection
+ */
 public class CrewSelectionScreen extends AHODScreen {
 
     private GameInstance gameInstance;
@@ -33,6 +37,9 @@ public class CrewSelectionScreen extends AHODScreen {
         createSelectionTable();
     }
 
+    /***
+     * method used to display crew selection ui to player
+     */
     public void createSelectionTable(){
 
 
@@ -63,6 +70,7 @@ public class CrewSelectionScreen extends AHODScreen {
             @Override
             public void clicked(InputEvent ev, float x, float y) {
                 gameInstance.getPlayer().crew[0] = gameInstance.getPlayer().crew[0] +1;
+                gameInstance.getMessageHUD().addCrewMessages(0, 1);
                 gameInstance.advanceLevel();
             }
         });
@@ -70,6 +78,7 @@ public class CrewSelectionScreen extends AHODScreen {
             @Override
             public void clicked(InputEvent ev, float x, float y) {
                 gameInstance.getPlayer().crew[1] = gameInstance.getPlayer().crew[1] +1;
+                gameInstance.getMessageHUD().addCrewMessages(1, 1);
                 gameInstance.advanceLevel();
             }
         });
@@ -77,6 +86,7 @@ public class CrewSelectionScreen extends AHODScreen {
             @Override
             public void clicked(InputEvent ev, float x, float y) {
                 gameInstance.getPlayer().crew[2] = gameInstance.getPlayer().crew[2] +1;
+                gameInstance.getMessageHUD().addCrewMessages(2, 1);
                 gameInstance.advanceLevel();
             }
         });

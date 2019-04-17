@@ -6,7 +6,8 @@
     "text": "you have met a whirlpool, try to escape!!!",
     "chance": 5,
     "health": -5,
-    "escapeChance": 0.2
+    "escapeChance": 0.2,
+    "removeCrew": false
   },
   {
     "class":"uk.ac.york.sepr4.ahod2.obstacle.Obstacle",
@@ -15,6 +16,17 @@
     "text": "You have met the Typhoon, try to escape!!!",
     "chance": 5,
     "health": -10,
-    "escapeChance": 0.1
+    "escapeChance": 0.1,
+    "removeCrew": false
+  },
+  {
+    "class":"uk.ac.york.sepr4.ahod2.obstacle.Obstacle",
+    "id": 1,
+    "name": "Scurvy",
+    "text": "Your crew member has got scurvy, try to Cure!!!",
+    "chance": 5,
+    "health": 0,
+    "escapeChance": 0.1,
+    "removeCrew": true
   }
 ]

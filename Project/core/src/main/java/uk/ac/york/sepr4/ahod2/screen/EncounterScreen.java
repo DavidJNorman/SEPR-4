@@ -110,8 +110,10 @@ public class EncounterScreen extends AHODScreen {
             player.setGold(player.getGold() + encounterOption.getGold());
             if (player.getGold() < 0) {
                 //gold less than 0, player loses
+                gameInstance.getMessageHUD().addGoldMessage(encounterOption.getGold());
                 gameInstance.fadeSwitchScreen(new EndScreen(gameInstance, false));
             } else {
+                gameInstance.getMessageHUD().addGoldMessage(encounterOption.getGold());
                 gameInstance.fadeSwitchScreen(gameInstance.getSailScreen());
             }
         }
