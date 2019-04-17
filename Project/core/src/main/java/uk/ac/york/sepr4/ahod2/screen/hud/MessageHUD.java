@@ -54,7 +54,8 @@ public class MessageHUD {
      * @param gold specified value of gold
      */
     public void addGoldMessage(Integer gold) {
-        Label label = new Label("+ " + gold + " GOLD", StyleManager.generateLabelStyle(30, Color.GREEN));
+        //Changed the gold receive message to include the additional gold gained by having crew 2
+        Label label = new Label("+ " + (gold+(3*gameInstance.getPlayer().crew[2])) + " GOLD", StyleManager.generateLabelStyle(30, Color.GREEN));
         goldMessages.put(label, 0f);
     }
 

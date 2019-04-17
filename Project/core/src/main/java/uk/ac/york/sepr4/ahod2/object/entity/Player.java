@@ -39,5 +39,7 @@ public class Player {
         this.gold += gold;
     }
 
-
+    public Ship getShip(){
+        return this.ship;
+    }
 }
