@@ -41,7 +41,8 @@ public class CollegeNode extends Node {
         BattleScreen battleScreen = new BattleScreen(gameInstance,
                 ship,
                 college.getBossDifficulty(),
-                gameLevel.getLevelGold());
+                gameLevel.getLevelGold(),
+                gameLevel.getLevelScore());
         //switch to battle screen
         gameInstance.fadeSwitchScreen(battleScreen);
     }

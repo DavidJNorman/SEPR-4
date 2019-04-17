@@ -45,6 +45,7 @@ public class BattleScreen extends AHODScreen {
     //battle conditions
     private Integer gold;
     private Integer difficulty;
+    private Integer score;
     //display variables
     private Image playerShipImage, enemyShipImage;
     private Label playerHealthLabel, enemyHealthLabel, playerManaLabel, enemyManaLabel;
@@ -63,7 +64,8 @@ public class BattleScreen extends AHODScreen {
         this(gameInstance,
                 ShipFactory.generateEnemyShip(gameInstance.getCurrentLevel().getDifficulty()),
                 gameInstance.getCurrentLevel().getDifficulty(),
-                gameInstance.getCurrentLevel().getBattleGold());
+                gameInstance.getCurrentLevel().getBattleGold(),
+                gameInstance.getCurrentLevel().getBattleScore());
     }
 
     /***
@@ -71,13 +73,15 @@ public class BattleScreen extends AHODScreen {
      * @param gameInstance
      * @param enemy specified enemy
      * @param gold gold reward
+     * @param score score earned (new)
      */
-    public BattleScreen(GameInstance gameInstance, Ship enemy, Integer difficulty, Integer gold) {
+    public BattleScreen(GameInstance gameInstance, Ship enemy, Integer difficulty, Integer gold, Integer score) {
         super(new Stage(new ScreenViewport(), new SpriteBatch()), FileManager.battleScreenBG);
         this.gameInstance = gameInstance;
         this.enemy = enemy;
         this.difficulty = difficulty;
         this.gold = gold;
+        this.score = score;
 
         player = gameInstance.getPlayer();
 
@@ -268,8 +272,14 @@ public class BattleScreen extends AHODScreen {
             //Increases the amount of gold the player gets based on the number of crew 2
             player.addGold(gold + (player.crew[2]*3));
             gameInstance.getMessageHUD().addGoldMessage(gold);
+
             //healing the player with crew members
             player.getShip().setHealth(player.getShip().getHealth()+(3*player.crew[0]));
+
+            //new update the score after each battle
+            player.addScore(score);
+            gameInstance.getMessageHUD().addScoreMessage(score);
+
             if (enemy.isBoss()) {
 
 

@@ -6,6 +6,8 @@
     "departmentIds" : [1,2],
     "levelGold" : 200,
     "battleGold": 30,
+    "battleScore": 20,
+    "levelScore": 100,
     "depth": 8,
     "difficulty": 1
   },
@@ -16,6 +18,8 @@
     "departmentIds" : [3,4],
     "levelGold" : 300,
     "battleGold": 50,
+    "battleScore": 30,
+    "levelScore": 120,
     "depth": 12,
     "difficulty": 2
   },
@@ -26,6 +30,8 @@
     "departmentIds" : [5,6],
     "levelGold" : 400,
     "battleGold": 80,
+    "battleScore": 40,
+    "levelScore": 150,
     "depth": 16,
     "difficulty": 3
   },
@@ -36,6 +42,8 @@
     "departmentIds" : [7,8],
     "levelGold" : 400,
     "battleGold": 100,
+    "battleScore": 80,
+    "levelScore": 200,
     "depth": 20,
     "difficulty": 4
   },
@@ -46,6 +54,8 @@
     "departmentIds" : [9,10],
     "levelGold" : 400,
     "battleGold": 120,
+    "battleScore": 100,
+    "levelScore": 250,
     "depth": 25,
     "difficulty": 5
   }

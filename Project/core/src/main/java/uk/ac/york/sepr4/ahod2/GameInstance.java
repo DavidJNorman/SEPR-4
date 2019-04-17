@@ -11,6 +11,7 @@ import uk.ac.york.sepr4.ahod2.object.building.BuildingManager;
 import uk.ac.york.sepr4.ahod2.object.card.CardManager;
 import uk.ac.york.sepr4.ahod2.object.encounter.EncounterManager;
 import uk.ac.york.sepr4.ahod2.object.entity.Player;
+import uk.ac.york.sepr4.ahod2.obstacle.ObstacleManager;
 import uk.ac.york.sepr4.ahod2.screen.AHODScreen;
 import uk.ac.york.sepr4.ahod2.screen.EndScreen;
 import uk.ac.york.sepr4.ahod2.screen.ShipViewScreen;
@@ -33,6 +34,7 @@ public class GameInstance {
     private CardManager cardManager;
     private BuildingManager buildingManager;
     private EncounterManager encounterManager;
+    private ObstacleManager obstacleManager;
     //persistent screens
     private SailScreen sailScreen;
     private ShipViewScreen shipViewScreen;
@@ -52,6 +54,8 @@ public class GameInstance {
         cardManager = new CardManager();
         buildingManager = new BuildingManager(this);
         encounterManager = new EncounterManager();
+            //new obstacle manager
+        obstacleManager = new ObstacleManager();
 
         //Initialize Screens and views
         statsHud = new StatsHUD(this);

@@ -82,7 +82,7 @@
     "damageSelf": 5,
     "damage": 15,
     "moveTime": 0,
-    "manaCost": 5,
+    "manaCost": 2,
     "heal": 0
   },
   {
@@ -96,7 +96,7 @@
     "damageSelf": 0,
     "damage": 8,
     "moveTime": 0,
-    "manaCost": 7,
+    "manaCost": 5,
     "heal": 0
   },
   {
@@ -122,7 +122,7 @@
     "desc": "Fires balls of chain!",
     "textureStr": "chainshot",
     "damageSelf": 0,
-    "damage": 6,
+    "damage": 10,
     "moveTime": 0,
     "manaCost": 6,
     "heal": 0
@@ -166,7 +166,7 @@
   "damageSelf": 0,
   "damage": 5,
   "moveTime": 4,
-  "manaCost": 7,
+  "manaCost": 6,
   "heal": 0
   },
   {
@@ -248,7 +248,7 @@
     "desc": "Fires projectile comprised of small metal slugs!++",
     "textureStr": "rakingfire++",
     "damageSelf": 0,
-    "damage": 15,
+    "damage": 10,
     "moveTime": 5,
     "manaCost": 10,
     "heal": 0
@@ -277,7 +277,7 @@
     "textureStr": "navigateshallows++",
     "damageSelf": 10,
     "damage": 10,
-    "moveTime": 6,
+    "moveTime": 3,
     "manaCost": 7,
     "heal": 0
   },
@@ -317,9 +317,9 @@
     "name": "Board",
     "desc": "Board the enemy's boat",
     "textureStr": "board",
-    "damageSelf": 5,
-    "damage": 5,
-    "moveTime": 5,
+    "damageSelf": 24,
+    "damage": 8,
+    "moveTime": 6,
     "manaCost": 10,
     "heal": 0
   },
@@ -331,10 +331,10 @@
     "name": "Board++",
     "desc": "Board the enemy's boat++",
     "textureStr": "board++",
-    "damageSelf": 5,
-    "damage": 5,
-    "moveTime": 8,
-    "manaCost": 10,
+    "damageSelf": 20,
+    "damage": 10,
+    "moveTime": 6,
+    "manaCost": 8,
     "heal": 0
   },
   {

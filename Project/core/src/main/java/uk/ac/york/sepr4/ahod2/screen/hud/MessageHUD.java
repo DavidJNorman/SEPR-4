@@ -36,6 +36,7 @@ public class MessageHUD {
     private String currentMessage = "";
     private float currentMessageTime = 0;
     private HashMap<Label, Float> goldMessages = new HashMap<>();
+    private HashMap<Label, Float> scoreMessages = new HashMap<>();
 
     public MessageHUD(GameInstance gameInstance) {
         this.gameInstance = gameInstance;
@@ -59,6 +60,11 @@ public class MessageHUD {
         goldMessages.put(label, 0f);
     }
 
+    public void addScoreMessage(Integer score) {
+        Label label = new Label("+ " + score + " SCORE", StyleManager.generateLabelStyle(30, Color.GREEN));
+        scoreMessages.put(label, 0f);
+    }
+
     /***
      * Add temporary status message to inform player
      * @param message message to display
@@ -68,6 +74,8 @@ public class MessageHUD {
         currentMessage = message;
         currentMessageTime = time;
     }
+
+
 
     /***
      * Update visible messages.
@@ -101,6 +109,23 @@ public class MessageHUD {
                 }
                 //slide label
                 label.setPosition(5, 5 + (Gdx.graphics.getHeight() / 2) * (time / resourceMessageTime));
+
+            }
+        }
+
+        for (Label label : scoreMessages.keySet()) {
+            Float time = (scoreMessages.get(label));
+            if (time + delta > resourceMessageTime) {
+                //add label to be removed
+                toRemove.add(label);
+            } else {
+                scoreMessages.replace(label, time + delta);
+                //add label to stage if not exists
+                if (!hudStage.getActors().contains(label, false)) {
+                    hudStage.addActor(label);
+                }
+                //slide label
+                label.setPosition(5, 35 + (Gdx.graphics.getHeight() / 2) * (time / resourceMessageTime));
 
             }
         }

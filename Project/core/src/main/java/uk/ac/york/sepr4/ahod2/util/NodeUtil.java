@@ -22,6 +22,7 @@ public class NodeUtil {
     private static Integer maxRowWidth = 4, minRowWidth = 2;
     //chance to replace node with BattleNode
     private static Double battleNodeChance = 0.4;
+    private static Double obstacleNodeChance = 0.2;
 
     /***
      * Generates random node map and populates with department,
@@ -49,7 +50,11 @@ public class NodeUtil {
                 if (random.nextDouble() <= battleNodeChance) {
                     //replace with battle node
                     finalNodes.add(new BattleNode(node));
-                } else {
+                }else if (random.nextDouble() <= obstacleNodeChance) {
+                    //new replace with obstacle node
+                    finalNodes.add(new ObstacleNode(node));
+                }
+                else {
                     finalNodes.add(node);
                 }
             }
@@ -60,7 +65,7 @@ public class NodeUtil {
             while (!inserted) {
                 Integer loc = random.nextInt(finalNodes.size() - 1);
                 Node node = finalNodes.get(loc);
-                if (!(node instanceof CollegeNode || node instanceof StartNode || node instanceof DepartmentNode)) {
+                if (!(node instanceof CollegeNode || node instanceof StartNode || node instanceof DepartmentNode || node instanceof  ObstacleNode)) {
                     //acceptable position to set dept
                     finalNodes.set(loc, new DepartmentNode(node, department));
                     inserted = true;

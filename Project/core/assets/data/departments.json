@@ -46,7 +46,7 @@
     "id": 7,
     "name": "Chemistry",
     "repairCost": 6,
-    "minigamePower": 8,
+    "minigamePower": 8
   },
   {
     "class": "uk.ac.york.sepr4.ahod2.object.building.Department",

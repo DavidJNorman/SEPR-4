@@ -101,7 +101,8 @@ public class EncounterScreen extends AHODScreen {
             BattleScreen battleScreen = new BattleScreen(gameInstance,
                     ShipFactory.generateEnemyShip(encounterOption.getDifficulty()),
                     encounterOption.getDifficulty(),
-                    encounterOption.getGold());
+                    encounterOption.getGold(),
+                    0);
             gameInstance.fadeSwitchScreen(battleScreen);
         } else {
             //action result
