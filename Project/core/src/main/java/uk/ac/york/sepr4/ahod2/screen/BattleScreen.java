@@ -45,6 +45,7 @@ public class BattleScreen extends AHODScreen {
     //battle conditions
     private Integer gold;
     private Integer difficulty;
+    private Integer score;
     //display variables
     private Image playerShipImage, enemyShipImage;
     private Label playerHealthLabel, enemyHealthLabel, playerManaLabel, enemyManaLabel;
@@ -63,7 +64,8 @@ public class BattleScreen extends AHODScreen {
         this(gameInstance,
                 ShipFactory.generateEnemyShip(gameInstance.getCurrentLevel().getDifficulty()),
                 gameInstance.getCurrentLevel().getDifficulty(),
-                gameInstance.getCurrentLevel().getBattleGold());
+                gameInstance.getCurrentLevel().getBattleGold(),
+                gameInstance.getCurrentLevel().getBattleScore());
     }
 
     /***
@@ -71,13 +73,15 @@ public class BattleScreen extends AHODScreen {
      * @param gameInstance
      * @param enemy specified enemy
      * @param gold gold reward
+     * @param score score earned (new)
      */
-    public BattleScreen(GameInstance gameInstance, Ship enemy, Integer difficulty, Integer gold) {
+    public BattleScreen(GameInstance gameInstance, Ship enemy, Integer difficulty, Integer gold, Integer score) {
         super(new Stage(new ScreenViewport(), new SpriteBatch()), FileManager.battleScreenBG);
         this.gameInstance = gameInstance;
         this.enemy = enemy;
         this.difficulty = difficulty;
         this.gold = gold;
+        this.score = score;
 
         player = gameInstance.getPlayer();
 
@@ -259,6 +263,9 @@ public class BattleScreen extends AHODScreen {
             //player wins (reset mana and cards)
             player.addGold(gold);
             gameInstance.getMessageHUD().addGoldMessage(gold);
+            //new update the score after each battle
+            player.addScore(score);
+            gameInstance.getMessageHUD().addScoreMessage(score);
             if (enemy.isBoss()) {
                 //screen is switched in this method
                 gameInstance.advanceLevel();

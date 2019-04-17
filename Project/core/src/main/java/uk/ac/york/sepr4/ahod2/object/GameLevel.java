@@ -19,8 +19,8 @@ import java.util.Optional;
  */
 @Data
 public class GameLevel {
-
-    private Integer id, levelGold, battleGold, collegeId, difficulty, depth;
+    //new, add levelscore and battlescore
+    private Integer id, levelGold, battleGold, collegeId, difficulty, depth, levelScore, battleScore;
     private List<Integer> departmentIds;
 
     //populated when loaded by gameinstance

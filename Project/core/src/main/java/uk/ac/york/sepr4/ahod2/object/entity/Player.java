@@ -16,6 +16,7 @@ public class Player {
     private Ship ship;
     private Optional<Node> location = Optional.empty();
     private Integer gold = 100;
+    private Integer score = 0;
     private GameLevel level;
 
     public Player(GameLevel gameLevel) {
@@ -28,7 +29,7 @@ public class Player {
 
     //TODO: WIP
     public Integer getScore() {
-        return 0;
+        return score;
     }
 
     public void takeGold(Integer gold) {
@@ -38,5 +39,7 @@ public class Player {
     public void addGold(Integer gold) {
         this.gold += gold;
     }
+
+    public void addScore(Integer score){this.score += score;}
 
 }
