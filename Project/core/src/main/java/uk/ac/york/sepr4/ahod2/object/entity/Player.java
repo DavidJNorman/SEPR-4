@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 @Data
 public class Player {
-
+    public Integer[] crew = {0,0,0};
     private Ship ship;
     private Optional<Node> location = Optional.empty();
     private Integer gold = 100;
@@ -40,6 +40,12 @@ public class Player {
         this.gold += gold;
     }
 
+
+    public Ship getShip(){
+        return this.ship;
+    }
+
     public void addScore(Integer score){this.score += score;}
+
 
 }

@@ -209,12 +209,20 @@ public class BattleScreen extends AHODScreen {
      * @return cost of draw
      */
     private Integer getCardDrawCost() {
+        int drawCost;
         if (turnNo > 10) {
-            return 5;
+            //reduces draw cost by number of crew 1
+            drawCost = 5 - player.crew[1];
         } else if (turnNo == 1) {
-            return 1;
+            drawCost = 1;
         } else {
-            return (int) Math.floor((double) turnNo / 2);
+            drawCost= ((int) Math.floor((double) turnNo/ 2) -player.crew[1]);
+        }
+        if(drawCost<1){
+            //makes draw cost at min zero
+            return 1;
+        }else{
+            return drawCost;
         }
     }
 
@@ -261,14 +269,22 @@ public class BattleScreen extends AHODScreen {
         end = true;
         if (ship == enemy) {
             //player wins (reset mana and cards)
-            player.addGold(gold);
+            //Increases the amount of gold the player gets based on the number of crew 2
+            player.addGold(gold + (player.crew[2]*3));
             gameInstance.getMessageHUD().addGoldMessage(gold);
+
+            //healing the player with crew members
+            player.getShip().setHealth(player.getShip().getHealth()+(3*player.crew[0]));
+
             //new update the score after each battle
             player.addScore(score);
             gameInstance.getMessageHUD().addScoreMessage(score);
+
             if (enemy.isBoss()) {
+
+
                 //screen is switched in this method
-                gameInstance.advanceLevel();
+                gameInstance.fadeSwitchScreen(new CrewSelectionScreen(gameInstance), true);
             } else {
                 gameInstance.fadeSwitchScreen(new CardSelectionScreen(gameInstance, gameInstance.getCardManager().getRandomSelection(difficulty)), true);
             }
