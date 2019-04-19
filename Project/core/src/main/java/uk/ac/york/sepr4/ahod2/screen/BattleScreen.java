@@ -277,8 +277,8 @@ public class BattleScreen extends AHODScreen {
             player.getShip().setHealth(player.getShip().getHealth()+(3*player.crew[0]));
 
             //new update the score after each battle
-            player.addScore(score);
-            gameInstance.getMessageHUD().addScoreMessage(score);
+            player.addScore(this.score);
+            gameInstance.getMessageHUD().addScoreMessage(this.score);
 
             if (enemy.isBoss()) {
 

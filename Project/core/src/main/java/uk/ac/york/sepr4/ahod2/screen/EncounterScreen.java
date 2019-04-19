@@ -102,7 +102,7 @@ public class EncounterScreen extends AHODScreen {
                     ShipFactory.generateEnemyShip(encounterOption.getDifficulty()),
                     encounterOption.getDifficulty(),
                     encounterOption.getGold(),
-                    0);
+                    20);
             gameInstance.fadeSwitchScreen(battleScreen);
         } else {
             //action result
