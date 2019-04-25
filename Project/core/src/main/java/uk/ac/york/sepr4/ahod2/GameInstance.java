@@ -49,7 +49,7 @@ public class GameInstance {
     public GameInstance(AHOD2 ahod2) {
         game = ahod2;
         INSTANCE = this;
-
+/*TODO:
         //Initialize Managers
         cardManager = new CardManager();
         buildingManager = new BuildingManager(this);
@@ -75,6 +75,9 @@ public class GameInstance {
             Gdx.app.error("GameInstance", "First Level could not be found! Exiting!");
             Gdx.app.exit();
         }
+*/
+        GameLevel myLevel = new GameLevel();
+        player = new Player( myLevel);
     }
 
     public void start() {
@@ -124,7 +127,7 @@ public class GameInstance {
      * @param screen
      */
     public void switchScreen(Screen screen) {
-        game.setScreen(screen);
+        //game.setScreen(screen);
     }
 
     /***

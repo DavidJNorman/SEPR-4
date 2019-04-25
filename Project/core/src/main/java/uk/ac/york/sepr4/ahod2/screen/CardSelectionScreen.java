@@ -26,7 +26,7 @@ public class CardSelectionScreen extends AHODScreen {
     private boolean selected = false;
 
     public CardSelectionScreen(GameInstance gameInstance, List<Card> selection) {
-        super(new Stage(new ScreenViewport()), FileManager.menuScreenBG);
+        //super(new Stage(new ScreenViewport()), FileManager.menuScreenBG);
 
         this.gameInstance = gameInstance;
         this.selection = selection;

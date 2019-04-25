@@ -27,8 +27,8 @@ public class ObstacleScreen extends AHODScreen {
     Obstacle obstacle;
     GameInstance gameInstance;
     public ObstacleScreen(GameInstance gameInstance, Obstacle obstacle) {
-        super(new Stage(new ScreenViewport(), new SpriteBatch()),
-                new Texture(Gdx.files.internal("images/screen/encounter/" + obstacle.getBackground())));
+        //super(new Stage(new ScreenViewport(), new SpriteBatch()),
+        //        new Texture(Gdx.files.internal("images/screen/encounter/" + obstacle.getBackground())));
         this.gameInstance = gameInstance;
         this.obstacle = obstacle;
 

@@ -37,14 +37,14 @@ public class MinigameScreen extends AHODScreen {
     private Table introTable, playTable;
 
     public MinigameScreen(GameInstance gameInstance, DepartmentScreen departmentScreen) {
-        super(new Stage(new ScreenViewport()), FileManager.menuScreenBG);
+        //super(new Stage(new ScreenViewport()), FileManager.menuScreenBG);
         this.gameInstance = gameInstance;
         this.departmentScreen = departmentScreen;
 
         minigamePower = departmentScreen.getDepartment().getMinigamePower();
 
         createIntroTable();
-        setMessageHUD(gameInstance);
+        //setMessageHUD(gameInstance);
     }
 
     /***

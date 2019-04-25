@@ -24,8 +24,8 @@ public class SailScreen extends AHODScreen {
     private SailInputProcessor sailInputProcessor;
 
     public SailScreen(GameInstance gameInstance) {
-        super(new Stage(new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(),
-                new OrthographicCamera())), FileManager.sailScreenBG);
+        //super(new Stage(new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(),
+         //       new OrthographicCamera())), FileManager.sailScreenBG);
 
         this.gameInstance = gameInstance;
 
@@ -36,8 +36,8 @@ public class SailScreen extends AHODScreen {
         gameInstance.getMessageHUD().addStatusMessage("Select Starting Node!", 10f);
 
         //enable stats and message HUDs
-        setStatsHUD(gameInstance);
-        setMessageHUD(gameInstance);
+       // setStatsHUD(gameInstance);
+        //setMessageHUD(gameInstance);
     }
 
     /***

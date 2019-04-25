@@ -76,7 +76,7 @@ public class BattleScreen extends AHODScreen {
      * @param score score earned (new)
      */
     public BattleScreen(GameInstance gameInstance, Ship enemy, Integer difficulty, Integer gold, Integer score) {
-        super(new Stage(new ScreenViewport(), new SpriteBatch()), FileManager.battleScreenBG);
+        //super(new Stage(new ScreenViewport(), new SpriteBatch()), FileManager.battleScreenBG);
         this.gameInstance = gameInstance;
         this.enemy = enemy;
         this.difficulty = difficulty;
@@ -86,18 +86,18 @@ public class BattleScreen extends AHODScreen {
         player = gameInstance.getPlayer();
 
         //load battle visual elements
-        loadBattleElements();
+        //loadBattleElements();
 
         //set turn to player
         turn = BattleTurn.PLAYER;
 
         //set message and animations hud to appear on this screen
-        setMessageHUD(gameInstance);
-        setAnimationsHUD(gameInstance);
+        //setMessageHUD(gameInstance);
+        //setAnimationsHUD(gameInstance);
 
         //(re-)set battle variables for enemy and player ship
-        enemy.battleStart(gameInstance.getCardManager().getDefaultCards());
-        player.getShip().battleStart(gameInstance.getCardManager().getDefaultCards());
+//        enemy.battleStart(gameInstance.getCardManager().getDefaultCards());
+      //  player.getShip().battleStart(gameInstance.getCardManager().getDefaultCards());
     }
 
     /***
@@ -115,7 +115,7 @@ public class BattleScreen extends AHODScreen {
 
     @Override
     public void renderInner(float delta) {
-        updateBattleElements();
+        //updateBattleElements();
         if (end) {
             return;
         }
@@ -159,6 +159,38 @@ public class BattleScreen extends AHODScreen {
             }
         }
     }
+
+    public void myBattle(){
+        if (end) {
+            return;
+        }
+        //switch turns
+        if (turn == BattleTurn.PLAYER) {
+            //Gdx.app.debug("BattleScreen", "Applying Enemy Damage!");
+            player.getShip().heal(0);
+            enemy.damage(500);
+            hasDied(enemy);
+            turn = BattleTurn.ENEMY;
+
+        } else if (turn == BattleTurn.ENEMY) {
+            //Gdx.app.debug("BattleScreen", "Applying Player Damage!");
+            enemy.heal(0);
+            player.getShip().damage(0);
+            hasDied(player.getShip());
+
+            turnNo++;
+            //set to turn number (max at 10)
+            player.getShip().setMaxMana(turnNo);
+            player.getShip().setMana(player.getShip().getMaxMana());
+            enemy.setMaxMana(turnNo);
+            enemy.setMana(enemy.getMaxMana());
+
+            turn = BattleTurn.PLAYER;
+           // Gdx.app.debug("BattleScreen", "Player Move!");
+        }
+    }
+
+
 
     /***
      * Check whether is currently the player's turn.
@@ -271,15 +303,15 @@ public class BattleScreen extends AHODScreen {
             //player wins (reset mana and cards)
             //Increases the amount of gold the player gets based on the number of crew 2
             player.addGold(gold + (player.crew[2]*3));
-            gameInstance.getMessageHUD().addGoldMessage(gold);
+//            gameInstance.getMessageHUD().addGoldMessage(gold);
 
             //healing the player with crew members
             player.getShip().setHealth(player.getShip().getHealth()+(3*player.crew[0]));
 
             //new update the score after each battle
             player.addScore(this.score);
-            gameInstance.getMessageHUD().addScoreMessage(this.score);
-
+   //         gameInstance.getMessageHUD().addScoreMessage(this.score);
+/*
             if (enemy.isBoss()) {
 
 
@@ -291,8 +323,8 @@ public class BattleScreen extends AHODScreen {
         } else {
             //player lost
             gameInstance.fadeSwitchScreen(new EndScreen(gameInstance, false), true);
-        }
-    }
+        }*/
+    }}
 
     /***
      * Setup tables for battle elements.

@@ -24,8 +24,8 @@ public class EncounterScreen extends AHODScreen {
     private GameInstance gameInstance;
 
     public EncounterScreen(GameInstance gameInstance, Encounter encounter) {
-        super(new Stage(new ScreenViewport(), new SpriteBatch()),
-                new Texture(Gdx.files.internal("images/screen/encounter/" + encounter.getBackground())));
+        //super(new Stage(new ScreenViewport(), new SpriteBatch()),
+         //       new Texture(Gdx.files.internal("images/screen/encounter/" + encounter.getBackground())));
         this.gameInstance = gameInstance;
         this.encounter = encounter;
 

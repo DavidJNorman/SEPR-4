@@ -31,7 +31,7 @@ public class DepartmentScreen extends AHODScreen {
     private boolean purchasedUpgrade = false;
 
     public DepartmentScreen(GameInstance gameInstance, Department department) {
-        super(new Stage(new ScreenViewport()), FileManager.menuScreenBG);
+        //super(new Stage(new ScreenViewport()), FileManager.menuScreenBG);
 
         this.gameInstance = gameInstance;
         this.department = department;
@@ -41,7 +41,7 @@ public class DepartmentScreen extends AHODScreen {
         generateRandomUpgrade();
 
         setupTopTable();
-        setMessageHUD(gameInstance);
+        //setMessageHUD(gameInstance);
     }
 
     /***

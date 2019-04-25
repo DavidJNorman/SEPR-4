@@ -30,7 +30,7 @@ public class CrewSelectionScreen extends AHODScreen {
     private TextureRegion crewThreeRegion;
     private TextureRegionDrawable crewThreeRegDraw;
     public CrewSelectionScreen(GameInstance gameInstance){
-        super(new Stage(new ScreenViewport()), FileManager.menuScreenBG);
+       // super(new Stage(new ScreenViewport()), FileManager.menuScreenBG);
 
         this.gameInstance = gameInstance;
         setStatsHUD(gameInstance);

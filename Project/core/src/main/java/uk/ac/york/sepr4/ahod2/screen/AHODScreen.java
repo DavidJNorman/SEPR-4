@@ -22,7 +22,7 @@ public abstract class AHODScreen implements Screen {
     private Texture background;
     private InputMultiplexer inputMultiplexer = new InputMultiplexer();
 
-    private ShapeRenderer shapeRenderer = new ShapeRenderer();
+   // private ShapeRenderer shapeRenderer = new ShapeRenderer();
 
     //HUD-related variables
     private boolean enableMessageHUD = false, enableStatsHUD = false, enableAnimationsHUD = false;
@@ -32,24 +32,24 @@ public abstract class AHODScreen implements Screen {
     private boolean fading = false;
     private float fade = 0;
 
-    public AHODScreen(Stage stage, Texture background) {
-        this.stage = stage;
-        this.background = background;
+    public AHODScreen() {//Stage stage, Texture background
+        //this.stage = stage;
+        //this.background = background;
 
         //set input multiplexer as processor (allows classes to add if required)
-        inputMultiplexer.addProcessor(stage);
+        //inputMultiplexer.addProcessor(stage);
     }
 
     /***
      * Enable MessageHUD on this screen.
      * @param gameInstance instance with which to get message data from.
      */
-    public void setMessageHUD(GameInstance gameInstance) {
+    /*public void setMessageHUD(GameInstance gameInstance) {
         this.gameInstance = gameInstance;
         enableMessageHUD = true;
         inputMultiplexer.addProcessor(gameInstance.getMessageHUD().getHudStage());
     }
-
+*/
     /***
      * Enable StatsHUD on this screen.
      * @param gameInstance instance with which to get stats data from.
@@ -84,7 +84,7 @@ public abstract class AHODScreen implements Screen {
         drawBackground();
         renderInner(delta);
         if (isFading()) {
-            applyFadeOverlay();
+            //applyFadeOverlay();
         }
         stage.act(delta);
         stage.draw();
@@ -115,17 +115,17 @@ public abstract class AHODScreen implements Screen {
      * Apply fade overlay.
      * (Draw rectangle over screen)
      */
-    public void applyFadeOverlay() {
-        Gdx.gl.glEnable(GL20.GL_BLEND);
-        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-        shapeRenderer.setProjectionMatrix(stage.getBatch().getProjectionMatrix());
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(new Color(0, 0, 0, fade));
-        shapeRenderer.rect(0, getCameraLowerBound().y, stage.getWidth(), stage.getHeight());
-        shapeRenderer.end();
-        Gdx.gl.glDisable(GL20.GL_BLEND);
+ //   public void applyFadeOverlay() {
+   //     Gdx.gl.glEnable(GL20.GL_BLEND);
+     //   Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+       // shapeRenderer.setProjectionMatrix(stage.getBatch().getProjectionMatrix());
+        //shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        //shapeRenderer.setColor(new Color(0, 0, 0, fade));
+        //shapeRenderer.rect(0, getCameraLowerBound().y, stage.getWidth(), stage.getHeight());
+        //shapeRenderer.end();
+        //Gdx.gl.glDisable(GL20.GL_BLEND);
 
-    }
+    //}
 
     /***
      * Draw screen's background.
@@ -150,7 +150,7 @@ public abstract class AHODScreen implements Screen {
 
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(inputMultiplexer);
+//        Gdx.input.setInputProcessor(inputMultiplexer);
     }
 
     @Override
