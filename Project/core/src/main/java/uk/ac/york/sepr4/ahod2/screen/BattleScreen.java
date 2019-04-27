@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import lombok.Getter;
+import lombok.Setter;
 import uk.ac.york.sepr4.ahod2.GameInstance;
 import uk.ac.york.sepr4.ahod2.io.FileManager;
 import uk.ac.york.sepr4.ahod2.io.StyleManager;
@@ -43,6 +44,7 @@ public class BattleScreen extends AHODScreen {
     @Getter
     private Player player;
     //battle conditions
+    @Getter
     private Integer gold;
     private Integer difficulty;
     private Integer score;
@@ -54,7 +56,10 @@ public class BattleScreen extends AHODScreen {
     //battle variables
     private BattleTurn turn;
     private boolean animating = false, end = false;
+    @Setter
     private Integer turnNo = 1;
+    @Getter @Setter
+    int drawCost;
 
     /***
      * Used by generic battle encounters (through BattleNode) to initialize battle.
@@ -240,8 +245,7 @@ public class BattleScreen extends AHODScreen {
      * Increases as no. of turns increases (max 10, min 1).
      * @return cost of draw
      */
-    private Integer getCardDrawCost() {
-        int drawCost;
+    public Integer getCardDrawCost() {
         if (turnNo > 10) {
             //reduces draw cost by number of crew 1
             drawCost = 5 - player.crew[1];

@@ -29,7 +29,7 @@ public class EncounterScreen extends AHODScreen {
         this.gameInstance = gameInstance;
         this.encounter = encounter;
 
-        createEncounterInfo();
+        //createEncounterInfo();
     }
 
 
@@ -94,7 +94,7 @@ public class EncounterScreen extends AHODScreen {
      * Action encounter option.
      * @param encounterOption specified encounter option.
      */
-    private void optionClick(EncounterOption encounterOption) {
+    public void optionClick(EncounterOption encounterOption) {
         //Gdx.app.debug("EncounterScreen", "Option clicked!");
         if (encounterOption.isBattle()) {
             //enter battle

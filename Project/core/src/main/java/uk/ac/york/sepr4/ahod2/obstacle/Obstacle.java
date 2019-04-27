@@ -1,12 +1,14 @@
 package uk.ac.york.sepr4.ahod2.obstacle;
 
 import lombok.Getter;
+import lombok.Setter;
+
 /***
  * NEW
  * Card used to represent instance of obstacles.
  * Contains data used to populate ObstacleScreen.
  */
-@Getter
+@Getter @Setter
 public class Obstacle {
 
     private Integer id;

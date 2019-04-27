@@ -32,7 +32,7 @@ public class ObstacleScreen extends AHODScreen {
         this.gameInstance = gameInstance;
         this.obstacle = obstacle;
 
-        createObstacleInfo();
+        ObstacleForTest();
     }
 
     @Override
@@ -109,6 +109,46 @@ public class ObstacleScreen extends AHODScreen {
         }
 
         getStage().addActor(table);
+    }
+
+    public void ObstacleForTest(){
+        if (!obstacle.getRemoveCrew()){
+            //obstacles that reduce player health
+            String text = "TRY TO ESCAPE" + "\n\n" + "IF FAIL lOSE " + -obstacle.getHealth() + " HEALTH";
+            Random random = new Random();
+            Double escape = random.nextDouble();
+            if (escape > obstacle.getEscapeChance()){
+                Player player = gameInstance.getPlayer();
+                player.getShip().setHealth(player.getShip().getHealth() + obstacle.getHealth());
+                if(player.getShip().getHealth() <= 0){
+                    System.out.println("you lose");
+                }else{
+                    System.out.println("you lose some health");
+                }
+            }else {
+                System.out.println("Nothing happens");
+            }
+        }
+        else{
+            //obstacle that remove a crew member
+            String text ="TRY TO CURE" + "\n\n" + "IF FAIL lOSE ONE CREW MEMBER";
+            Random random = new Random();
+            Double escape = random.nextDouble();
+            //System.out.println(escape);
+            //System.out.println(obstacle.getEscapeChance());
+            if (escape > obstacle.getEscapeChance()){
+                for(int i = 0; i < 3; i++ ){
+                    if(gameInstance.getPlayer().crew[i] > 0){
+                        gameInstance.getPlayer().crew[i]--;
+                        System.out.println("you lost a crew member");
+                        break;
+                    }
+                }
+            }
+            else{
+                System.out.println("Nothing happens");
+            }
+        }
     }
 
 }

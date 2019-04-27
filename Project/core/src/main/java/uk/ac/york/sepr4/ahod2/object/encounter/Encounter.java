@@ -22,4 +22,8 @@ public class Encounter {
         //json
     }
 
+    public void addOption(EncounterOption optionA){
+        options.add(0, optionA);
+    }
+
 }
